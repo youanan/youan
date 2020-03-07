@@ -7,18 +7,18 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="youanan's wiki">
     <meta name="author" content="youanan">
-    <link rel="icon" href="..//favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
-    <title>diary</title>
+    <title>vim的TAB与空格</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="..//bootstrop-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this template -->
-    <link href="..//bootstrop-3.3.7/dist/css/starter-template.css" rel="stylesheet">
+    <link href="/bootstrap-3.3.7/dist/css/starter-template.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -57,53 +57,32 @@
     <div class="container">
 
   
-<div id="Diary"><h1 id="Diary" class="header"><a href="#Diary">Diary</a></h1></div>
 
-<div id="Diary-2020"><h2 id="2020" class="header"><a href="#Diary-2020">2020</a></h2></div>
 
-<div id="Diary-2020-March"><h3 id="March" class="header"><a href="#Diary-2020-March">March</a></h3></div>
-<ul>
-<li>
-<a href="2020-03-07.html">2020-03-07</a>
+<p>
+在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：
+set ts=4  (注：ts是tabstop的缩写，设TAB宽4个空格)
+set expandtab
+</p>
 
-</ul>
+<p>
+对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：
+TAB替换为空格：
+:set ts=4
+:set expandtab
+:%retab!
+</p>
 
-<div id="Diary-2015"><h2 id="2015" class="header"><a href="#Diary-2015">2015</a></h2></div>
+<p>
+空格替换为TAB：
+:set ts=4
+:set noexpandtab
+:%retab!
+</p>
 
-<div id="Diary-2015-September"><h3 id="September" class="header"><a href="#Diary-2015-September">September</a></h3></div>
-<ul>
-<li>
-<a href="2015-09-20.html">2015-09-20</a>
-
-<li>
-<a href="2015-09-13.html">2015-09-13</a>
-
-</ul>
-
-<div id="Diary-2014"><h2 id="2014" class="header"><a href="#Diary-2014">2014</a></h2></div>
-
-<div id="Diary-2014-May"><h3 id="May" class="header"><a href="#Diary-2014-May">May</a></h3></div>
-<ul>
-<li>
-<a href="2014-05-11.html">2014-05-11</a>
-
-<li>
-<a href="2014-05-04.html">2014-05-04</a>
-
-<li>
-<a href="2014-05-03.html">2014-05-03</a>
-
-<li>
-<a href="2014-05-02.html">2014-05-02</a>
-
-</ul>
-
-<div id="Diary-2014-April"><h3 id="April" class="header"><a href="#Diary-2014-April">April</a></h3></div>
-<ul>
-<li>
-<a href="2014-04-22.html">2014-04-22</a>
-
-</ul>
+<p>
+加!是用于处理非空白字符之后的TAB，即所有的TAB，若不加!，则只处理行首的TAB。
+</p>
 
 
     </div><!-- /.container -->
@@ -113,9 +92,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/bootstrap-3.3.7/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/bootstrap-3.3.7/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
