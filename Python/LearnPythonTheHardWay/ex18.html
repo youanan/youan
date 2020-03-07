@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>习题 18: 命名、变量、代码、函数</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is youanan's wiki, design by vimwiki">
+    <meta name="author" content="youanan">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <!--local Bootstrap core CSS -->
+    <link href="../../bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+
+    <!--local google-code-prettify.CSS -->
+    <link href="../../css/prettify.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/starter-template.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://youanan.com">youanan</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="../../index.html">Home</a></li>
+            <li><a href="../../diary/diary.html">Diary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        
+
+<h1 id="toc_1">习题 18: 命名、变量、代码、函数</h1>
+
+<p>
+标题包含的内容够多的吧？接下来我要教你“函数(function)”了！咚咚锵！说到函数，不一样的人会对它有不一样的理解和使用方法，不过我只会教你现在能用到的最简单的使用方式。
+</p>
+
+<p>
+函数可以做三样事情：
+</p>
+
+<ol>
+<li>
+它们给代码片段命名，就跟“变量”给字符串和数字命名一样。
+
+<li>
+它们可以接受参数，就跟你的脚本接受 argv 一样。
+
+<li>
+通过使用 #1 和 #2，它们可以让你创建“微型脚本”或者“小命令”。
+
+</ol>
+
+<p>
+你可以使用 def 新建函数。我将让你创建四个不同的函数，它们工作起来和你的脚本一样。然后我会演示给你各个函数之间的关系。
+</p>
+
+
+<pre>
+# this one is like your scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print "arg1: %r, arg2: %r" % (arg1, arg2)
+
+# ok, that *args is actually pointless, we can just do this
+def print_two_again(arg1, arg2):
+    print "arg1: %r, arg2: %r" % (arg1, arg2)
+
+# this just takes one argument
+def print_one(arg1):
+    print "arg1: %r" % arg1
+
+# this one takes no arguments
+def print_none():
+    print "I got nothin'."
+
+
+print_two("Zed","Shaw")
+print_two_again("Zed","Shaw")
+print_one("First!")
+print_none()
+</pre>
+
+<p>
+让我们把你一个函数 print_two 肢解一下，这个函数和你写脚本的方式差不多，因此你看上去应该会觉着比较眼熟：
+</p>
+
+<ol>
+<li>
+首先我们告诉 Python 创建一个函数，我们使用到的命令是 def ，也就是“定义(define)”的意思。
+
+<li>
+紧接着 def 的是函数的名称。本例中它的名称是 “print_two”，但名字可以随便取，就叫 “peanuts” 也没关系。但最好函数的名称能够体现出函数的功能来。
+
+<li>
+然后我们告诉函数我们需要 *args (asterisk args)，这和脚本的 argv 非常相似，参数必须放在圆括号 () 中才能正常工作。
+
+<li>
+接着我们用冒号 : 结束本行，然后开始下一行缩进。
+
+<li>
+冒号以下，使用 4 个空格缩进的行都是属于 print_two 这个函数的内容。 其中第一行的作用是将参数解包，这和脚本参数解包的原理差不多。
+
+<li>
+为了演示它的工作原理，我们把解包后的每个参数都打印出来，这和我们在之前脚本练习中所作的类似。
+
+</ol>
+
+<p>
+函数 print_two 的问题是：它并不是创建函数最简单的方法。在 Python 函数中我们可以跳过整个参数解包的过程，直接使用 () 里边的名称作为变量名。这就是 print_two_again 实现的功能。
+</p>
+
+<p>
+接下来的例子是 print_one ，它向你演示了函数如何接受单个参数。
+</p>
+
+<p>
+最后一个例子是 print_none ，它向你演示了函数可以不接收任何参数。
+</p>
+
+<p>
+~~~~如果你不太能看懂上面的内容也别气馁。后面我们还有更多的练习向你展示如何创建和使用函数。现在你只要把函数理解成“迷你脚本”就可以了。
+</p>
+
+<h2 id="toc_1.1">你应该看到的结果</h2>
+
+<p>
+运行上面的脚本会看到如下结果:
+</p>
+
+<pre>
+$ python ex18.py
+arg1: 'Zed', arg2: 'Shaw'
+arg1: 'Zed', arg2: 'Shaw'
+arg1: 'First!'
+I got nothin'.
+$
+</pre>
+
+<p>
+你应该已经看出函数是怎样工作的了。注意到函数的用法和你以前见过的 exists、 open，以及别的“命令”有点类似了吧？其实我只是为了让你容易理解才叫它们“命令”， 它们的本质其实就是函数。也就是说，你也可以在自己的脚本中创建你自己的“命令”。
+</p>
+
+<h2 id="toc_1.2">加分习题</h2>
+
+<p>
+为自己写一个函数注意事项以供后续参考。你可以写在一个索引卡片上随时阅读，直到你记住所有的要点为止。注意事项如下：
+</p>
+
+<ol>
+<li>
+函数定义是以 def 开始的吗？
+
+<li>
+函数名称是以字符和下划线 _ 组成的吗？
+
+<li>
+函数名称是不是紧跟着括号 ( ？
+
+<li>
+括号里是否包含参数？多个参数是否以逗号隔开？
+
+<li>
+参数名称是否有重复？（不能使用重复的参数名）
+
+<li>
+紧跟着参数的是不是括号和冒号 ): ？
+
+<li>
+紧跟着函数定义的代码是否使用了 4 个空格的缩进 (indent)？
+
+<li>
+函数结束的位置是否取消了缩进 (“dedent”)？
+
+</ol>
+
+<p>
+当你运行（或者说“使用 use”或者“调用 call”）一个函数时，记得检查下面的要点：
+</p>
+
+<ol>
+<li>
+调运函数时是否使用了函数的名称？
+
+<li>
+函数名称是否紧跟着 ( ？
+
+<li>
+括号后有无参数？多个参数是否以逗号隔开？
+
+<li>
+函数是否以 ) 结尾？
+
+</ol>
+
+<p>
+按照这两份检查表里的内容检查你的练习，直到你不需要检查表为止。
+</p>
+
+<p>
+最后，将下面这句话阅读几遍：
+</p>
+
+<p>
+“‘运行函数(run)’、‘调用函数(call)’、和 ‘使用函数(use)’是同一个意思”
+</p>
+
+        
+      </div>
+        <nav>
+            <ul class="pagination">
+                <li><a href="intro_zh.html">译者前言</a></li>
+                <li><a href="intro.html">前言</a></li>
+                <li><a href="ex1.html">1</a></li>
+                <li><a href="ex2.html">2</a></li>
+                <li><a href="ex3.html">3</a></li>
+                <li><a href="ex4.html">4</a></li>
+                <li><a href="ex5.html">5</a></li>
+                <li><a href="ex6.html">6</a></li>
+                <li><a href="ex7.html">7</a></li>
+                <li><a href="ex8.html">8</a></li>
+                <li><a href="ex9.html">9</a></li>
+                <li><a href="ex10.html">10</a></li>
+                <li><a href="ex11.html">11</a></li>
+                <li><a href="ex12.html">12</a></li>
+                <li><a href="ex13.html">13</a></li>
+                <li><a href="ex14.html#">14</a></li>
+                <li><a href="ex15.html#">15</a></li>
+                <li><a href="ex16.html#">16</a></li>
+                <li><a href="ex17.html#">17</a></li>
+                <li><a href="ex18.html#">18</a></li>
+                <li><a href="ex19.html#">19</a></li>
+                <li><a href="ex20.html#">20</a></li>
+                <li><a href="ex21.html#">21</a></li>
+                <li><a href="ex22.html#">22</a></li>
+                <li><a href="ex23.html#">23</a></li>
+                <li><a href="ex24.html#">24</a></li>
+                <li><a href="ex25.html#">25</a></li>
+                <li><a href="ex26.html#">26</a></li>
+                <li><a href="ex27.html#">27</a></li>
+                <li><a href="ex28.html#">28</a></li>
+                <li><a href="ex29.html#">29</a></li>
+                <li><a href="ex30.html#">30</a></li>
+                <li><a href="ex31.html#">31</a></li>
+                <li><a href="ex32.html#">32</a></li>
+                <li><a href="ex33.html#">33</a></li>
+                <li><a href="ex34.html#">34</a></li>
+                <li><a href="ex35.html#">35</a></li>
+                <li><a href="ex36.html#">36</a></li>
+                <li><a href="ex37.html#">37</a></li>
+                <li><a href="ex38.html#">38</a></li>
+                <li><a href="ex39.html#">39</a></li>
+                <li><a href="ex40.html#">40</a></li>
+                <li><a href="ex41.html#">41</a></li>
+                <li><a href="ex42.html#">42</a></li>
+                <li><a href="ex43.html#">43</a></li>
+                <li><a href="ex44.html#">44</a></li>
+                <li><a href="ex45.html#">45</a></li>
+                <li><a href="ex46.html#">46</a></li>
+                <li><a href="ex47.html#">47</a></li>
+                <li><a href="ex48.html#">48</a></li>
+                <li><a href="ex49.html">49</a></li>
+                <li><a href="ex50.html">50</a></li>
+                <li><a href="ex51.html">51</a></li>
+                <li><a href="ex52.html">52</a></li>
+                <li><a href="next.html">下一步</a></li>
+                <li><a href="advice.html">老程序员的建议</a></li>
+                </li>
+            </ul>
+        </nav>
+      <footer>
+          <p>&copy; Company 2015  <img src="http://youanan.qiniudn.com/youanan.com/youananemail.png"  alt="联系我" border="0"></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> -->
+    <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/panel/python_panel.js"></script>
+    <script type="text/javascript" src="../../js/google-code-prettify/prettify.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>习题 25: 更多更多的练习</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is youanan's wiki, design by vimwiki">
+    <meta name="author" content="youanan">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <!--local Bootstrap core CSS -->
+    <link href="../../bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+
+    <!--local google-code-prettify.CSS -->
+    <link href="../../css/prettify.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/starter-template.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://youanan.com">youanan</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="../../index.html">Home</a></li>
+            <li><a href="../../diary/diary.html">Diary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        
+<h1 id="toc_1">习题 25: 更多更多的练习</h1>
+
+<p>
+我们将做一些关于函数和变量的练习，以确认你真正掌握了这些知识。这节练习对你来说可以说是一本道：写程序，逐行研究，弄懂它。
+</p>
+
+<p>
+不过这节练习还是有些不同，你不需要运行它，取而代之，你需要将它导入到 python 里通过自己执行函数的方式运行。
+</p>
+
+<pre>
+def break_words(stuff):
+    """This function will break up words for us."""
+    words = stuff.split(' ')
+    return words
+
+def sort_words(words):
+    """Sorts the words."""
+    return sorted(words)
+
+def print_first_word(words):
+    """Prints the first word after popping it off."""
+    word = words.pop(0)
+    print word
+
+def print_last_word(words):
+    """Prints the last word after popping it off."""
+    word = words.pop(-1)
+    print word
+
+def sort_sentence(sentence):
+    """Takes in a full sentence and returns the sorted words."""
+    words = break_words(sentence)
+    return sort_words(words)
+
+def print_first_and_last(sentence):
+    """Prints the first and last words of the sentence."""
+    words = break_words(sentence)
+    print_first_word(words)
+    print_last_word(words)
+
+def print_first_and_last_sorted(sentence):
+    """Sorts the words then prints the first and last one."""
+    words = sort_sentence(sentence)
+    print_first_word(words)
+    print_last_word(words)
+</pre>
+
+<p>
+首先以正常的方式 python ex25.py 运行，找出里边的错误，并把它们都改正过来。然后你需要接着下面的答案章节完成这节练习。
+</p>
+
+<h2 id="toc_1.1">你应该看到的结果</h2>
+
+<p>
+这节练习我们将在你之前用来做算术的 python 编译器里，用交互的方式和你的.py 作交流。
+</p>
+
+<p>
+这是我做出来的样子：
+</p>
+
+<pre>
+$ python
+Python 2.5.1 (r251:54863, Feb  6 2009, 19:02:12) 
+[GCC 4.0.1 (Apple Inc. build 5465)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import ex25
+&gt;&gt;&gt; sentence = "All good things come to those who wait."
+&gt;&gt;&gt; words = ex25.break_words(sentence)
+&gt;&gt;&gt; words
+['All', 'good', 'things', 'come', 'to', 'those', 'who', 'wait.']
+&gt;&gt;&gt; sorted_words = ex25.sort_words(words)
+&gt;&gt;&gt; sorted_words
+['All', 'come', 'good', 'things', 'those', 'to', 'wait.', 'who']
+&gt;&gt;&gt; ex25.print_first_word(words)
+All
+&gt;&gt;&gt; ex25.print_last_word(words)
+wait.
+&gt;&gt;&gt; wrods
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+NameError: name 'wrods' is not defined
+&gt;&gt;&gt; words
+['good', 'things', 'come', 'to', 'those', 'who']
+&gt;&gt;&gt; ex25.print_first_word(sorted_words)
+All
+&gt;&gt;&gt; ex25.print_last_word(sorted_words)
+who
+&gt;&gt;&gt; sorted_words
+['come', 'good', 'things', 'those', 'to', 'wait.']
+&gt;&gt;&gt; sorted_words = ex25.sort_sentence(sentence)
+&gt;&gt;&gt; sorted_words
+['All', 'come', 'good', 'things', 'those', 'to', 'wait.', 'who']
+&gt;&gt;&gt; ex25.print_first_and_last(sentence)
+All
+wait.
+&gt;&gt;&gt; ex25.print_first_and_last_sorted(sentence)
+All
+who
+&gt;&gt;&gt; ^D
+$
+</pre>
+
+<p>
+我们来逐行分析一下每一步实现的是什么：
+</p>
+
+<ul>
+<li>
+在第 5 行你将自己的 ex25.py 执行了 import，和你做过的其它 import 一样。在 import 的时候你不需要加 .py 后缀。这个过程里，你把 ex25.py 当做了一个“模组(module)”来使用，你在这个模组里定义的函数也可以直接调用出来。
+
+<li>
+第 6 行你创建了一个用来处理的“句子(sentence)”。
+
+<li>
+第 7 行你使用 ex25 调用你的第一个函数 ex25.break_words。其中的 . (dot, period)符号可以告诉 Python：“嗨，我要运行 ex25 里的哪个个叫 break_words 的函数！”
+
+<li>
+第 8 行我们只是输入 words，而 python 将在第 9 行打印出这个变量里边有什么。看上去可能会觉得奇怪，不过这其实是一个“列表(list)”，你会在后面的章节中学到它。
+
+<li>
+10-11 行我们使用 ex25.sort_words 来得到一个排序过的句子。
+
+<li>
+13-16 行我们使用 ex25.print_first_word 和 ex25.print_last_word 将第一个和最后一个词打印出来。
+
+<li>
+第 17 行比较有趣。我把 words 变量写错成了 wrods，所以 python 在 18-20 行给了一个错误信息。
+
+<li>
+21-22 行我们打印出了修改过的词汇列表。第一个和最后一个单词我们已经打印过了，所以在这里没有再次打印出来。
+
+<li>
+剩下的行你需要自己分析一下，就留作你的加分习题了。
+
+</ul>
+
+<h2 id="toc_1.2">加分习题</h2>
+
+<ol>
+<li>
+研究答案中没有分析过的行，找出它们的来龙去脉。确认自己明白了自己使用的是模组 ex25 中定义的函数。
+
+<li>
+试着执行 help(ex25) 和 help(ex25.break_words) 。这是你得到模组帮助文档的方式。 所谓帮助文档就是你定义函数时放在 """ 之间的东西，它们也被称作 documentation comments （文档注解），后面你还会看到更多类似的东西。
+
+<li>
+重复键入 ex25. 是很烦的一件事情。有一个捷径就是用 from ex25 import * 的方式导入模组。这相当于说：“我要把 ex25 中所有的东西 import 进来。”程序员喜欢说这样的倒装句，开一个新的会话，看看你所有的函数是不是已经在那里了。
+
+<li>
+把你脚本里的内容逐行通过 python 编译器执行，看看会是什么样子。你可以执行CTRL-D (Windows 下是 CTRL-Z)来关闭编译器。
+
+</ol>
+
+        
+      </div>
+        <nav>
+            <ul class="pagination">
+                <li><a href="intro_zh.html">译者前言</a></li>
+                <li><a href="intro.html">前言</a></li>
+                <li><a href="ex1.html">1</a></li>
+                <li><a href="ex2.html">2</a></li>
+                <li><a href="ex3.html">3</a></li>
+                <li><a href="ex4.html">4</a></li>
+                <li><a href="ex5.html">5</a></li>
+                <li><a href="ex6.html">6</a></li>
+                <li><a href="ex7.html">7</a></li>
+                <li><a href="ex8.html">8</a></li>
+                <li><a href="ex9.html">9</a></li>
+                <li><a href="ex10.html">10</a></li>
+                <li><a href="ex11.html">11</a></li>
+                <li><a href="ex12.html">12</a></li>
+                <li><a href="ex13.html">13</a></li>
+                <li><a href="ex14.html#">14</a></li>
+                <li><a href="ex15.html#">15</a></li>
+                <li><a href="ex16.html#">16</a></li>
+                <li><a href="ex17.html#">17</a></li>
+                <li><a href="ex18.html#">18</a></li>
+                <li><a href="ex19.html#">19</a></li>
+                <li><a href="ex20.html#">20</a></li>
+                <li><a href="ex21.html#">21</a></li>
+                <li><a href="ex22.html#">22</a></li>
+                <li><a href="ex23.html#">23</a></li>
+                <li><a href="ex24.html#">24</a></li>
+                <li><a href="ex25.html#">25</a></li>
+                <li><a href="ex26.html#">26</a></li>
+                <li><a href="ex27.html#">27</a></li>
+                <li><a href="ex28.html#">28</a></li>
+                <li><a href="ex29.html#">29</a></li>
+                <li><a href="ex30.html#">30</a></li>
+                <li><a href="ex31.html#">31</a></li>
+                <li><a href="ex32.html#">32</a></li>
+                <li><a href="ex33.html#">33</a></li>
+                <li><a href="ex34.html#">34</a></li>
+                <li><a href="ex35.html#">35</a></li>
+                <li><a href="ex36.html#">36</a></li>
+                <li><a href="ex37.html#">37</a></li>
+                <li><a href="ex38.html#">38</a></li>
+                <li><a href="ex39.html#">39</a></li>
+                <li><a href="ex40.html#">40</a></li>
+                <li><a href="ex41.html#">41</a></li>
+                <li><a href="ex42.html#">42</a></li>
+                <li><a href="ex43.html#">43</a></li>
+                <li><a href="ex44.html#">44</a></li>
+                <li><a href="ex45.html#">45</a></li>
+                <li><a href="ex46.html#">46</a></li>
+                <li><a href="ex47.html#">47</a></li>
+                <li><a href="ex48.html#">48</a></li>
+                <li><a href="ex49.html">49</a></li>
+                <li><a href="ex50.html">50</a></li>
+                <li><a href="ex51.html">51</a></li>
+                <li><a href="ex52.html">52</a></li>
+                <li><a href="next.html">下一步</a></li>
+                <li><a href="advice.html">老程序员的建议</a></li>
+                </li>
+            </ul>
+        </nav>
+      <footer>
+          <p>&copy; Company 2015  <img src="http://youanan.qiniudn.com/youanan.com/youananemail.png"  alt="联系我" border="0"></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> -->
+    <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/panel/python_panel.js"></script>
+    <script type="text/javascript" src="../../js/google-code-prettify/prettify.js"></script>
+  </body>
+</html>
+

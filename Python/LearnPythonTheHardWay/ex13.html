@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>习题 13: 参数、解包、变量</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="this is youanan's wiki, design by vimwiki">
+    <meta name="author" content="youanan">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <!--local Bootstrap core CSS -->
+    <link href="../../bootstrap/3.3.2/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+
+    <!--local google-code-prettify.CSS -->
+    <link href="../../css/prettify.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/starter-template.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://youanan.com">youanan</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="../../index.html">Home</a></li>
+            <li><a href="../../diary/diary.html">Diary</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        
+<h1 id="toc_1">习题 13: 参数、解包、变量</h1>
+
+<p>
+在这节练习中，我们将降到另外一种将变量传递给脚本的方法(所谓脚本，就是你写的 .py 程序)。你已经知道，如果要运行 ex13.py，只要在命令行运行 python ex13.py 就可以了。这句命令中的 ex13.py 部分就是所谓的“参数(argument)”，我们现在要做的就是写一个可以接受参数的脚本。
+</p>
+
+<p>
+将下面的程序写下来，后面你将看到详细解释。
+</p>
+
+<pre>
+from sys import argv
+
+script, first, second, third = argv
+
+print "The script is called:", script
+print "Your first variable is:", first
+print "Your second variable is:", second
+print "Your third variable is:", third
+</pre>
+
+<p>
+在第 1 行我们有一个“import”语句. 这是你将 python 的功能引入你的脚本的方法. Python 不会一下子将它所有的功能给你，而是让你需要什么就调用什么。这样可以让你的程序保持精简，而后面的程序员看到你的代码的时候，这些“import”可以作为提示，让他们明白你的代码用到了哪些功能。
+</p>
+
+<p>
+argv 是所谓的“参数变量(argument variable)”，是一个非常标准的编程术语。在其他的编程语言里你也可以看到它。这个变量包含了你传递给 Python 的参数。通过后面的练习你将对它有更多的了解。
+</p>
+
+<p>
+第 3 行将 argv “解包(unpack)”，与其将所有参数放到同一个变量下面，我们将每个参数赋予一个变量名： script, first, second, 以及 third。这也许看上去有些奇怪, 不过”解包”可能是最好的描述方式了。它的含义很简单：“把 argv 中的东西解包，将所有的参数依次赋予左边的变量名”。
+</p>
+
+<p>
+接下来就是正常的打印了。
+</p>
+
+<h2 id="toc_1.1">等一下！“功能”还有另外一个名字</h2>
+
+<p>
+前面我们使用 import 让你的程序实现更多的功能，但实际上没人吧 import 称为“功能”。我希望你可以在没接触到正式术语的时候就弄懂它的功能。在继续下去之前, 你需要知道它们的真正名称：模组(modules)。
+</p>
+
+<p>
+从现在开始我们将把这些我们导入(import)进来的功能称作模组。你将看到类似这样的说法：“你需要把 sys 模组 import 进来。”也有人将它们称作“库(libraries)”，不过我们还是叫它们模组吧。
+</p>
+
+<h2 id="toc_1.2">你应该看到的结果</h2>
+
+<p>
+用下面的方法运行你的程序（注意你必须传递*三*个参数）：
+</p>
+
+<pre>
+python ex13.py first 2nd 3rd
+</pre>
+
+<p>
+如果你每次使用不同的参数运行，你将看到下面的结果：
+</p>
+
+<pre>
+$ python ex13.py first 2nd 3rd
+The script is called: ex13.py
+Your first variable is: first
+Your second variable is: 2nd
+Your third variable is: 3rd
+
+$ python ex13.py cheese apples bread
+The script is called: ex13.py
+Your first variable is: cheese
+Your second variable is: apples
+Your third variable is: bread
+
+$ python ex13.py Zed A. Shaw
+The script is called: ex13.py
+Your first variable is: Zed
+Your second variable is: A.
+Your third variable is: Shaw
+</pre>
+
+<p>
+你其实可以将“first”、“2nd”、“3rd”替换成任意三样东西。你可以将它们换成任意你想要的东西.
+</p>
+
+<pre>
+python ex13.py stuff I like
+python ex13.py anything 6 7
+</pre>
+
+<p>
+如果你没有运行对，你将看到如下错误：
+</p>
+
+<pre>
+python ex13.py first 2nd
+Traceback (most recent call last):
+  File "ex/ex13.py", line 3, in &lt;module&gt;
+    script, first, second, third = argv
+ValueError: need more than 3 values to unpack
+</pre>
+
+<p>
+当你运行脚本时提供的参数的个数不对的时候，你就会看到上述错误信息 (这次我只用了
+first 2nd 两个参数)。“need more than 3 values to unpack”这个错误信息告诉你参数数量不足。
+</p>
+
+<h2 id="toc_1.3">加分习题</h2>
+
+<ol>
+<li>
+给你的脚本三个以下的参数。看看会得到什么错误信息。试着解释一下。
+
+<li>
+再写两个脚本，其中一个接受更少的参数，另一个接受更多的参数，在参数解包时给它们取一些有意义的变量名。
+
+<li>
+将 raw_input 和 argv 一起使用，让你的脚本从用户手上得到更多的输入。
+
+<li>
+记住“模组(modules)”为你提供额外功能。多读几遍把这个词记住，因为我们后面还会用到它。
+
+</ol>
+
+        
+      </div>
+        <nav>
+            <ul class="pagination">
+                <li><a href="intro_zh.html">译者前言</a></li>
+                <li><a href="intro.html">前言</a></li>
+                <li><a href="ex1.html">1</a></li>
+                <li><a href="ex2.html">2</a></li>
+                <li><a href="ex3.html">3</a></li>
+                <li><a href="ex4.html">4</a></li>
+                <li><a href="ex5.html">5</a></li>
+                <li><a href="ex6.html">6</a></li>
+                <li><a href="ex7.html">7</a></li>
+                <li><a href="ex8.html">8</a></li>
+                <li><a href="ex9.html">9</a></li>
+                <li><a href="ex10.html">10</a></li>
+                <li><a href="ex11.html">11</a></li>
+                <li><a href="ex12.html">12</a></li>
+                <li><a href="ex13.html">13</a></li>
+                <li><a href="ex14.html#">14</a></li>
+                <li><a href="ex15.html#">15</a></li>
+                <li><a href="ex16.html#">16</a></li>
+                <li><a href="ex17.html#">17</a></li>
+                <li><a href="ex18.html#">18</a></li>
+                <li><a href="ex19.html#">19</a></li>
+                <li><a href="ex20.html#">20</a></li>
+                <li><a href="ex21.html#">21</a></li>
+                <li><a href="ex22.html#">22</a></li>
+                <li><a href="ex23.html#">23</a></li>
+                <li><a href="ex24.html#">24</a></li>
+                <li><a href="ex25.html#">25</a></li>
+                <li><a href="ex26.html#">26</a></li>
+                <li><a href="ex27.html#">27</a></li>
+                <li><a href="ex28.html#">28</a></li>
+                <li><a href="ex29.html#">29</a></li>
+                <li><a href="ex30.html#">30</a></li>
+                <li><a href="ex31.html#">31</a></li>
+                <li><a href="ex32.html#">32</a></li>
+                <li><a href="ex33.html#">33</a></li>
+                <li><a href="ex34.html#">34</a></li>
+                <li><a href="ex35.html#">35</a></li>
+                <li><a href="ex36.html#">36</a></li>
+                <li><a href="ex37.html#">37</a></li>
+                <li><a href="ex38.html#">38</a></li>
+                <li><a href="ex39.html#">39</a></li>
+                <li><a href="ex40.html#">40</a></li>
+                <li><a href="ex41.html#">41</a></li>
+                <li><a href="ex42.html#">42</a></li>
+                <li><a href="ex43.html#">43</a></li>
+                <li><a href="ex44.html#">44</a></li>
+                <li><a href="ex45.html#">45</a></li>
+                <li><a href="ex46.html#">46</a></li>
+                <li><a href="ex47.html#">47</a></li>
+                <li><a href="ex48.html#">48</a></li>
+                <li><a href="ex49.html">49</a></li>
+                <li><a href="ex50.html">50</a></li>
+                <li><a href="ex51.html">51</a></li>
+                <li><a href="ex52.html">52</a></li>
+                <li><a href="next.html">下一步</a></li>
+                <li><a href="advice.html">老程序员的建议</a></li>
+                </li>
+            </ul>
+        </nav>
+      <footer>
+          <p>&copy; Company 2015  <img src="http://youanan.qiniudn.com/youanan.com/youananemail.png"  alt="联系我" border="0"></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> -->
+    <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/panel/python_panel.js"></script>
+    <script type="text/javascript" src="../../js/google-code-prettify/prettify.js"></script>
+  </body>
+</html>
+
